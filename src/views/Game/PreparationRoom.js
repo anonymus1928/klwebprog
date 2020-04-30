@@ -2,10 +2,7 @@ import React from 'react';
 import { GameBoard } from './GameBoard';
 import { GameTileList } from './GameTileList';
 
-import { tiles } from "../../domain/tiles";
-import { demoPreparationBoard } from "../../domain/demoBoards";
-
-export function PreparationRoom({ onSelect, playerState }) {
+export function PreparationRoom({ onSelect, playerState, demoPreparationBoard, tiles }) {
     return (
         <>
             <div id="preparationroom">

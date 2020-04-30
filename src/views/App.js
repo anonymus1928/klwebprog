@@ -8,8 +8,11 @@ import { WaitingRoom } from './WaitingRoom/WaitingRoom';
 import { PreparationRoom } from './Game/PreparationRoom';
 import { Game } from './Game/Game';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBomb, faFlag } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBomb, faFlag } from '@fortawesome/free-solid-svg-icons';
+
+import { demoGameBoard, demoPreparationBoard } from "../domain/demoBoards";
+import { tiles } from "../domain/tiles";
  
 library.add(faBomb, faFlag)
 
@@ -22,8 +25,8 @@ export function App() {
     } else if(gameState === 'WAITING_FOR_SECOND_PLAYER') {
         return <WaitingRoom onSelect={setGameState} />
     } else if(gameState === 'PREPARE_GAME') {
-        return <PreparationRoom onSelect={setGameState} playerState={playerState} />
+        return <PreparationRoom onSelect={setGameState} playerState={playerState} tiles={tiles} demoPreparationBoard={demoPreparationBoard} />
     } else if(gameState === 'IN_GAME') {
-        return <Game onSelect={setGameState} playerState={playerState} />
+        return <Game onSelect={setGameState} playerState={playerState} tiles={tiles} demoGameBoard={demoGameBoard} />
     }
 }
