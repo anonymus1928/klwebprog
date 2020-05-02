@@ -1,12 +1,12 @@
-Németh Tamás
+**Németh Tamás**
 
-LX12AG
+**LX12AG**
 
-Kliensoldali webprogramozás, Stratego
+**Kliensoldali webprogramozás**, **Stratego**
 
-2020. 05. 02.
+*2020. 05. 02.*
 
-Ezt a megoldást Németh Tamás, LX12AG küldte be és készítette a Kliensoldali webprogramozás kurzus Stratego feladatához.
+Ezt a megoldást **Németh Tamás, LX12AG** küldte be és készítette a **Kliensoldali webprogramozás** kurzus **Stratego** feladatához.
 
 Kijelentem, hogy ez a megoldás a saját munkám.
 
