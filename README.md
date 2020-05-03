@@ -1,19 +1,12 @@
-**Németh Tamás**
-
-**LX12AG**
-
-**Kliensoldali webprogramozás**, **Stratego**
-
+**Németh Tamás**<br />
+**LX12AG**<br />
+**Kliensoldali webprogramozás**, **Stratego**<br />
 *2020. 05. 02.*
 
-Ezt a megoldást **Németh Tamás, LX12AG** küldte be és készítette a **Kliensoldali webprogramozás** kurzus **Stratego** feladatához.
-
-Kijelentem, hogy ez a megoldás a saját munkám.
-
-Nem másoltam vagy használtam harmadik féltől származó megoldásokat.
-
-Nem továbbítottam megoldást hallgatótársaimnak, és nem is tettem közzé.
-
+Ezt a megoldást **Németh Tamás, LX12AG** küldte be és készítette a **Kliensoldali webprogramozás** kurzus **Stratego** feladatához.<br />
+Kijelentem, hogy ez a megoldás a saját munkám.<br />
+Nem másoltam vagy használtam harmadik féltől származó megoldásokat.<br />
+Nem továbbítottam megoldást hallgatótársaimnak, és nem is tettem közzé.<br />
 Az Eötvös Loránd Tudományegyetem Hallgatói Követelményrendszere (ELTE szervezeti és működési szabályzata, II. Kötet, 74/C. §) kimondja, hogy mindaddig, amíg egy hallgató egy másik hallgató munkáját - vagy legalábbis annak jelentős részét - saját munkájaként mutatja be, az fegyelmi vétségnek számít. A fegyelmi vétség legsúlyosabb következménye a hallgató elbocsátása az egyetemről.
 
 
