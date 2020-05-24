@@ -3,6 +3,7 @@ export const tiles = [
         id: 1,
         name: "Zászló",
         pcs: 1,
+        pcs_left: 1,
         icon: "flag",
         i_id: "f",
     },
@@ -10,6 +11,7 @@ export const tiles = [
         id: 2,
         name: "Bomba",
         pcs: 6,
+        pcs_left: 6,
         icon: "bomb",
         i_id: "b",
     },
@@ -18,6 +20,7 @@ export const tiles = [
         name: "Tábornagy",
         level: 10,
         pcs: 1,
+        pcs_left: 1,
         i_id: 10,
     },
     {
@@ -25,6 +28,7 @@ export const tiles = [
         name: "Tábornok",
         level: 9,
         pcs: 1,
+        pcs_left: 1,
         i_id: 9,
     },
     {
@@ -32,6 +36,7 @@ export const tiles = [
         name: "Ezredes",
         level: 8,
         pcs: 2,
+        pcs_left: 2,
         i_id: 8,
     },
     {
@@ -39,6 +44,7 @@ export const tiles = [
         name: "Őrnagy",
         level: 7,
         pcs: 3,
+        pcs_left: 3,
         i_id: 7,
     },
     {
@@ -46,6 +52,7 @@ export const tiles = [
         name: "Kapitány",
         level: 6,
         pcs: 4,
+        pcs_left: 4,
         i_id: 6,
     },
     {
@@ -53,6 +60,7 @@ export const tiles = [
         name: "Főhadnagy",
         level: 5,
         pcs: 4,
+        pcs_left: 4,
         i_id: 5,
     },
     {
@@ -60,6 +68,7 @@ export const tiles = [
         name: "Őrmester",
         level: 4,
         pcs: 4,
+        pcs_left: 4,
         i_id: 4,
     },
     {
@@ -67,6 +76,7 @@ export const tiles = [
         name: "Aknász",
         level: 3,
         pcs: 5,
+        pcs_left: 5,
         i_id: 3,
     },
     {
@@ -74,6 +84,7 @@ export const tiles = [
         name: "Felderítő",
         level: 2,
         pcs: 8,
+        pcs_left: 8,
         i_id: 2,
     },
     {
@@ -81,6 +92,82 @@ export const tiles = [
         name: "Kém",
         level: 1,
         pcs: 1,
+        pcs_left: 1,
+        i_id: 1,
+    },
+]
+
+export const reducedTiles = [
+    {
+        id: 1,
+        name: "Zászló",
+        pcs: 1,
+        pcs_left: 1,
+        icon: "flag",
+        i_id: "f",
+    },
+    {
+        id: 2,
+        name: "Bomba",
+        pcs: 2,
+        pcs_left: 2,
+        icon: "bomb",
+        i_id: "b",
+    },
+    {
+        id: 3,
+        name: "Tábornagy",
+        level: 10,
+        pcs: 1,
+        pcs_left: 1,
+        i_id: 10,
+    },
+    {
+        id: 5,
+        name: "Ezredes",
+        level: 8,
+        pcs: 1,
+        pcs_left: 1,
+        i_id: 8,
+    },
+    {
+        id: 7,
+        name: "Kapitány",
+        level: 6,
+        pcs: 1,
+        pcs_left: 1,
+        i_id: 6,
+    },
+    {
+        id: 9,
+        name: "Őrmester",
+        level: 4,
+        pcs: 1,
+        pcs_left: 1,
+        i_id: 4,
+    },
+    {
+        id: 10,
+        name: "Aknász",
+        level: 3,
+        pcs: 2,
+        pcs_left: 2,
+        i_id: 3,
+    },
+    {
+        id: 11,
+        name: "Felderítő",
+        level: 2,
+        pcs: 2,
+        pcs_left: 2,
+        i_id: 2,
+    },
+    {
+        id: 12,
+        name: "Kém",
+        level: 1,
+        pcs: 1,
+        pcs_left: 1,
         i_id: 1,
     },
 ]

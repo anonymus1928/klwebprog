@@ -4,7 +4,7 @@ import { logo } from "../../assets/stratego-logo.png";
 import { RoomKeyDisplay } from './RoomKeyDisplay';
 import { WaitingRoomButtons } from './WaitingRoomButtons';
 
-export function WaitingRoom({ onSelect }) {
+export function WaitingRoom() {
     const roomKey = 123456789
     return (
         <div id="waitingroom">
@@ -16,7 +16,7 @@ export function WaitingRoom({ onSelect }) {
                         <RoomKeyDisplay roomKey={roomKey} />
                     </div>
                     <p>Játékszoba kulcs</p>
-                    <WaitingRoomButtons onSelect={onSelect} />
+                    <WaitingRoomButtons />
                 </div>
             </div>
         </div>

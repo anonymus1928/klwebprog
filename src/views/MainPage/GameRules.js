@@ -3,7 +3,7 @@ import React from 'react';
 export function GameRules() {
     return (
         <div id="gamerules">
-            <div className="content py-5 mx-auto">
+            <div className="container py-5 mx-auto">
                 <h1>Játékszabály</h1>
                 <hr />
                 <h2>A játék célja</h2>

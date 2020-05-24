@@ -1,10 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { joinPlayer } from '../../state/game/gameState_actions';
 
-export function JoinGameButton({ onSelect, onPlayer }) {
+export function JoinGameButton() {
+    const dispatch = useDispatch()
 
-    const handleSubmit = e => {
-        onPlayer(2)
-        onSelect('PREPARE_GAME')
+    const handleSubmit = () => {
+        dispatch(joinPlayer(2))
     }
 
     return (

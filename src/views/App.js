@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../src/assets/app.css';
@@ -10,23 +10,21 @@ import { Game } from './Game/Game';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBomb, faFlag } from '@fortawesome/free-solid-svg-icons';
-
-import { demoGameBoard, demoPreparationBoard } from "../domain/demoBoards";
-import { tiles } from "../domain/tiles";
+import { useSelector } from 'react-redux';
+import { MAIN_PAGE, WAITING_FOR_SECOND_PLAYER, PREPARE_GAME, IN_GAME } from '../state/game/gameState_actions';
  
 library.add(faBomb, faFlag)
 
 export function App() {
-    const [gameState, setGameState] = useState('MAIN_PAGE')
-    const [playerState, setPlayerState] = useState(1)
+    const gameState = useSelector(state => state.game.gameState)
 
-    if(gameState === 'MAIN_PAGE') {
-        return <MainPage onSelect={setGameState} onPlayer={ setPlayerState } />
-    } else if(gameState === 'WAITING_FOR_SECOND_PLAYER') {
-        return <WaitingRoom onSelect={setGameState} />
-    } else if(gameState === 'PREPARE_GAME') {
-        return <PreparationRoom onSelect={setGameState} playerState={playerState} tiles={tiles} demoPreparationBoard={demoPreparationBoard} />
-    } else if(gameState === 'IN_GAME') {
-        return <Game onSelect={setGameState} playerState={playerState} tiles={tiles} demoGameBoard={demoGameBoard} />
+    if(gameState === MAIN_PAGE) {
+        return <MainPage />
+    } else if(gameState === WAITING_FOR_SECOND_PLAYER) {
+        return <WaitingRoom />
+    } else if(gameState === PREPARE_GAME) {
+        return <PreparationRoom />
+    } else if(gameState === IN_GAME) {
+        return <Game />
     }
 }
