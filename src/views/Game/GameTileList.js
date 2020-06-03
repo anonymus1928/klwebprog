@@ -29,7 +29,7 @@ export function GameTileList({ title }) {
         console.log("tiles: ",tiles)
         return (
             <div className="ml-3 mr-3 rounded-lg text-left overflow-auto text-light tile-container">
-                { title && <h5 className={cn("text-center py-3 smoke", {"text-warning": turn && title === "Játékos"})}>{title}</h5> }
+                { title && <h5 className={cn("text-center py-3 smoke", {"text-warning": turn && title === "Játékos"}, {"text-warning": !turn && title === "Ellenfél"})}>{title}</h5> }
                 <div className="d-flex flex-wrap justify-content-center">
                     {tiles.map(tile =>
                             <div className="my-1 mx-1" key={tile.id + '|' + Date.now()} >

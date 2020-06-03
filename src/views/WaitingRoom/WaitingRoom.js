@@ -5,7 +5,6 @@ import { RoomKeyDisplay } from './RoomKeyDisplay';
 import { WaitingRoomButtons } from './WaitingRoomButtons';
 
 export function WaitingRoom() {
-    const roomKey = 123456789
     return (
         <div id="waitingroom">
             <div className="content mx-auto py-5 text-center">
@@ -13,7 +12,7 @@ export function WaitingRoom() {
                 <div className="smoke rounded-lg py-5">
                     <h1 className="mb-5">Várakozás második játékosra...</h1>
                     <div className="smoke">
-                        <RoomKeyDisplay roomKey={roomKey} />
+                        <RoomKeyDisplay />
                     </div>
                     <p>Játékszoba kulcs</p>
                     <WaitingRoomButtons />

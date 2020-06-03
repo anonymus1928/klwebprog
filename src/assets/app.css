@@ -3,12 +3,12 @@ body, #header {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgb(200,200,200);
-    -webkit-touch-callout: none;
+    /*-webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
 }
 
 body {
@@ -42,7 +42,7 @@ body {
     transition: ease-in 0.1s;
 }
 
-.card2:hover {
+.card2:hover, .on-focus {
     background-size: 111%;
 }
 
@@ -56,11 +56,11 @@ body {
     transition: ease-in 0.2s;
 }
 
-.card-body:hover #joinform {
+.card-body:hover #joinform, .on-focus #joinform {
     opacity: 1;
 }
 
-.card:hover>.card-body {
+.card:hover>.card-body, .on-focus>.card-body {
     background-color: rgba(255,255,255,0);
     box-shadow: 10px 5px 10px gray;
 }
@@ -71,14 +71,6 @@ body {
 
 #gamerules {
     background-color: rgb(200,200,200);
-}
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
 }
 
 #waitingroom p {

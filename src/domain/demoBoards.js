@@ -25,8 +25,8 @@ export const demoGameBoard = [
 ]
 
 export const reducedDemoGameBoard = [
-    ['e','e','e','e','e','e'],
-    ['e','e','e','e','e','e'],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
@@ -34,10 +34,10 @@ export const reducedDemoGameBoard = [
 ]
 
 export const reducedDemoEnemyBoard = [
-    ['e','e','e','e','e','e'],
-    ['e','e','e','e','e','e'],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
-    [1,2,2,3,3,4],
-    ['b','b','f',10,8,6],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0],
 ]

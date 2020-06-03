@@ -6,7 +6,7 @@ export function NewGameButton() {
     const dispatch = useDispatch()
 
     const clickHandler = () => {
-        dispatch(joinPlayer(1))
+        dispatch(joinPlayer({player: 1, roomId: null}))
     }
 
     return (

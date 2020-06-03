@@ -5,11 +5,12 @@ import { GameTile } from './GameTile';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { tilesReducePcs, tilesIncreasePcs } from '../../state/tiles/actions';
-import { PREPARE_GAME, IN_GAME } from '../../state/game/gameState_actions';
+import { PREPARE_GAME, IN_GAME, gameOver } from '../../state/game/gameState_actions';
 import { moveTile, selectTile, removeTile, resetSelectedTile, attack, enemyDefeat, playerDefeat, draw } from '../../state/game/board_actions';
+import { wsSyncState } from '../../state/websocket/actions';
 
 
-export function GameBoard({ setShowModal }) {
+export function GameBoard() {
 
     const tiles = useSelector(state => state.tiles)
     const enemyBoard = useSelector(state => state.game.eBoard)
@@ -20,6 +21,7 @@ export function GameBoard({ setShowModal }) {
     const gameState = useSelector(state => state.game.gameState)
     const enemyTile = useSelector(state => state.game.enemyTile)
     const fight = useSelector(state => state.game.fight)
+    const ready = useSelector(state => state.game.ready)
 
 
     const dispatch = useDispatch()
@@ -64,23 +66,27 @@ export function GameBoard({ setShowModal }) {
                 switch (result) {
                     case 0:
                         console.log("[FIGHT] - GAME OVER")
-                        setShowModal(true)
+                        dispatch(gameOver())
                         break;
                     case 1:
                         console.log("[FIGHT] - PLAYER has won")
                         dispatch(enemyDefeat())
+                        dispatch(wsSyncState())
                         break;
                     case 2:
                         console.log("[FIGHT] - ENEMY has won")
                         dispatch(playerDefeat())
+                        dispatch(wsSyncState())
                         break;
                     case 3:
                         console.log("[FIGHT] - DRAW")
                         dispatch(draw())
+                        dispatch(wsSyncState())
                         break;
                     default:
                         break;
                 }
+                
             }, 3000);
         }
     })
@@ -88,15 +94,18 @@ export function GameBoard({ setShowModal }) {
     const clickEmptyHandler = (i,j) => {
         if(gameState === PREPARE_GAME) {
             //PREPARE_GAME
-            if(selectedTile !== '' && i >= boardY-rowsCount) {
-                dispatch(moveTile(i,j,selectedTile.tile.i_id))
-                if(selectedTile.i === -1 && selectedTile.j === -1) {
-                    dispatch(tilesReducePcs(selectedTile.tile))
+            if(!ready.player) {
+                if(selectedTile !== '' && i >= boardY-rowsCount) {
+                    dispatch(moveTile(i,j,selectedTile.tile.i_id))
+                    if(selectedTile.i === -1 && selectedTile.j === -1) {
+                        dispatch(tilesReducePcs(selectedTile.tile))
+                    }
+                    dispatch(wsSyncState())
                 }
             }
         } else if(gameState === IN_GAME) {
             //IN_GAME
-            if(selectedTile !== '') {
+            if(selectedTile !== '' && turn) {
                 if(selectedTile.tile.i_id === 2) {
                     if(validTo2(i,j)) {
                         dispatch(moveTile(i,j))
@@ -106,6 +115,7 @@ export function GameBoard({ setShowModal }) {
                         dispatch(moveTile(i,j))
                     }
                 }
+                dispatch(wsSyncState())
             }
         } else {
             return <div class="alert alert-danger" role="alert">WRONG GAMESTATE => '{gameState}'</div>
@@ -115,16 +125,18 @@ export function GameBoard({ setShowModal }) {
     const clickPlayerHandler = (i,j,tile) => {
         if(gameState === PREPARE_GAME) {
             //PREPERE_GAME
-            if(selectedTile !== '') {
-                if(selectedTile.i === -1 && selectedTile.j === -1) {
-                    dispatch(selectTile(tile,i,j))
-                } else if(selectedTile.i === i && selectedTile.j === j) {
-                    dispatch(resetSelectedTile())
+            if(!ready.player) {
+                if(selectedTile !== '') {
+                    if(selectedTile.i === -1 && selectedTile.j === -1) {
+                        dispatch(selectTile(tile,i,j))
+                    } else if(selectedTile.i === i && selectedTile.j === j) {
+                        dispatch(resetSelectedTile())
+                    } else {
+                        dispatch(selectTile(tile,i,j))
+                    }
                 } else {
                     dispatch(selectTile(tile,i,j))
                 }
-            } else {
-                dispatch(selectTile(tile,i,j))
             }
         } else if(gameState === IN_GAME) {
             //IN_GAME
@@ -156,9 +168,10 @@ export function GameBoard({ setShowModal }) {
 
     const rightClickHandler = (i,j,tile,e) => {
         e.preventDefault()
-        if(gameState === PREPARE_GAME) {
+        if(gameState === PREPARE_GAME && !ready.player) {
             dispatch(removeTile(i,j))
             dispatch(tilesIncreasePcs(tile))
+            dispatch(wsSyncState())
         }
     }
 
