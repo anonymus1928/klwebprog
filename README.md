@@ -12,7 +12,7 @@ hogy mindaddig, amíg egy hallgató egy másik hallgató munkáját - vagy legal
 az fegyelmi vétségnek számít. A fegyelmi vétség legsúlyosabb következménye a hallgató elbocsátása az egyetemről.
 
 
-**Open sandbox: https://codesandbox.io/s/bajusz-stratego-cy35l**
+**~~Open sandbox: https://codesandbox.io/s/bajusz-stratego-cy35l~~**
 
 
 
