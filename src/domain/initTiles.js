@@ -1,4 +1,4 @@
-export const tiles = [
+export const initTiles = [
     {
         id: 1,
         name: "Zászló",
@@ -97,7 +97,7 @@ export const tiles = [
     },
 ]
 
-export const reducedTiles = [
+export const reducedInitTiles = [
     {
         id: 1,
         name: "Zászló",

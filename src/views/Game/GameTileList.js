@@ -26,7 +26,6 @@ export function GameTileList({ title }) {
     })
 
     if(gameState === IN_GAME) {
-        console.log("tiles: ",tiles)
         return (
             <div className="ml-3 mr-3 rounded-lg text-left overflow-auto text-light tile-container">
                 { title && <h5 className={cn("text-center py-3 smoke", {"text-warning": turn && title === "Játékos"}, {"text-warning": !turn && title === "Ellenfél"})}>{title}</h5> }

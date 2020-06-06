@@ -21,6 +21,7 @@ export function GameBoard() {
     const gameState = useSelector(state => state.game.gameState)
     const enemyTile = useSelector(state => state.game.enemyTile)
     const fight = useSelector(state => state.game.fight)
+    const defender = useSelector(state => state.game.defender)
     const ready = useSelector(state => state.game.ready)
 
 
@@ -59,7 +60,7 @@ export function GameBoard() {
 
     useEffect(() => {
         //battle
-        if(fight) {
+        if(fight && !defender) {
             setTimeout(() => {
                 const result = getFightResult()
 
@@ -86,7 +87,6 @@ export function GameBoard() {
                     default:
                         break;
                 }
-                
             }, 3000);
         }
     })
@@ -161,6 +161,7 @@ export function GameBoard() {
                 if(validStep(i,j) || validTo2(i, j, true)) {
                     const tile = findTile(enemyBoard[Math.abs(i - (boardY - 1))][j],tiles)
                     dispatch(attack(i,j,tile))
+                    dispatch(wsSyncState())
                 }
             }
         }
@@ -178,6 +179,7 @@ export function GameBoard() {
     const divSize = {
         width: 100/boardX + '%',
         height: 100/boardY + '%',
+        fontSize: 1 + 'vw',
     }
 
     const checkWater = (x,dir,attack) => {
@@ -224,7 +226,7 @@ export function GameBoard() {
         const si = selectedTile.i
         const sj = selectedTile.j
 
-        return (si === i && Math.abs(sj - j) === 1) || ((sj === j && Math.abs(si - i) === 1))
+        return ((si === i && Math.abs(sj - j) === 1) || (sj === j && Math.abs(si - i) === 1))
     }
 
     return (
@@ -240,7 +242,7 @@ export function GameBoard() {
                                         cn('border border-light position-relative',
                                             {"smoke": i<boardY-rowsCount && gameState === PREPARE_GAME},
                                             {"available cursor": (gameState === PREPARE_GAME && i>=boardY-rowsCount && selectedTile !== '')},
-                                            {"available cursor": gameState === IN_GAME && (validTo2(i,j) || validStep(i,j))}
+                                            {"available cursor": gameState === IN_GAME && (validTo2(i,j) || validStep(i,j)) && !fight}
                                         )}
                                 style={divSize} key={i + '_' + j}
                                 onClick={() => clickEmptyHandler(i,j)}

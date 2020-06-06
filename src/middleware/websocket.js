@@ -1,14 +1,12 @@
 import * as actions from '../state/websocket/actions'
 import io from 'socket.io-client'
-import { JOIN_PLAYER, gameStateChange, PREPARE_GAME, GAME_STATE_CHANGE, MAIN_PAGE, IN_GAME, GAME_OVER } from '../state/game/gameState_actions'
+import { JOIN_PLAYER, gameStateChange, PREPARE_GAME, GAME_STATE_CHANGE, MAIN_PAGE, IN_GAME, GAME_OVER, WAITING_FOR_SECOND_PLAYER } from '../state/game/gameState_actions'
 
 let socket = null
 
 
 
 export const socketMiddleware = store => next => action => {
-    console.log('[WS] - store: ', store.getState().game.roomId)
-    console.log('[WS] - action: ', action)
     switch(action.type) {
         case actions.WS_CONNECT:
             if(socket !== null) {
@@ -17,11 +15,14 @@ export const socketMiddleware = store => next => action => {
             socket = io('http://webprogramozas.inf.elte.hu:3030')
 
             socket.on('room-is-full', message => {
-                console.log('room-is-full: ', message);
-                store.dispatch(gameStateChange(PREPARE_GAME))
+                if(store.getState().game.gameState !== WAITING_FOR_SECOND_PLAYER) {
+                    console.log("A player has disconnected and an other just connected.");
+                    store.dispatch(gameStateChange(MAIN_PAGE))
+                } else {
+                    store.dispatch(gameStateChange(PREPARE_GAME))
+                }
             })
             socket.on('state-changed', message => {
-                console.log('state-changed: ', message);
                 if(message.state.gameOver) {
                     store.getState().game = {
                         ...store.getState().game,
@@ -31,19 +32,36 @@ export const socketMiddleware = store => next => action => {
                         }
                     }
                 } else {
-                    store.getState().game = {
-                        ...store.getState().game,
-                        pBoard: message.state.pBoard,
-                        eBoard: message.state.eBoard,
-                        playerList: message.state.playerList,
-                        enemyList: message.state.enemyList,
-                        turn: store.getState().game.gameState === IN_GAME ? !store.getState().game.turn : store.getState().game.turn,
+                    if(message.state.fight) {
+                        store.getState().game = {
+                            ...store.getState().game,
+                            pBoard: message.state.pBoard,
+                            eBoard: message.state.eBoard,
+                            selectedTile: message.state.selectedTile,
+                            enemyTile: message.state.enemyTile,
+                            fight: message.state.fight,
+                            turn: message.state.turn,
+                            defender: true,
+                        }
+                    } else {
+                        store.getState().game = {
+                            ...store.getState().game,
+                            pBoard: message.state.pBoard,
+                            eBoard: message.state.eBoard,
+                            playerList: message.state.playerList,
+                            enemyList: message.state.enemyList,
+                            turn: store.getState().game.gameState === IN_GAME ? true : store.getState().game.turn,
+                            defender: false,
+                            fight: false,
+                            selectedTile: '',
+                            enemyTile: '',
+
+                        }
                     }
                 }
                 next(action)
             })
             socket.on('action-sent', message => {
-                console.log('action-sent: ', message);
                 if(message.action === 'ready') {
                     store.getState().game.ready.count += 1
                     if(store.getState().game.ready.count === 2) {
@@ -58,7 +76,6 @@ export const socketMiddleware = store => next => action => {
                 next(action)
             })
             socket.on('player-left', message => {
-                console.log('player-left: ', message);
                 store.dispatch(gameStateChange(MAIN_PAGE))
             })
             break
@@ -76,7 +93,6 @@ export const socketMiddleware = store => next => action => {
         
         case JOIN_PLAYER:
             if(action.payload.roomId === null) {
-                console.log('create-room')
                 socket.emit('create-room', ack => {
                     console.log(ack)
                     if(ack.status === 'ok') {
@@ -87,9 +103,7 @@ export const socketMiddleware = store => next => action => {
                     }
                 })
             } else {
-                console.log('join-room')
                 socket.emit('join-room', action.payload.roomId, ack => {
-                    console.log(ack)
                     if(ack.status === 'ok') {
                         next(action)
                     } else if(ack.status === 'error') {
@@ -114,14 +128,38 @@ export const socketMiddleware = store => next => action => {
 
         case actions.WS_SYNC_STATE:
             const roomId = store.getState().game.roomId
-            let state = {
-                pBoard: store.getState().game.eBoard,
-                eBoard: store.getState().game.pBoard,
-                playerList: store.getState().game.enemyList,
-                enemyList: store.getState().game.playerList,
-            }
-            if(store.getState().game.gameState === IN_GAME) {
-                store.getState().game.turn = !store.getState().game.turn
+            let state = null
+            if(store.getState().game.fight) {
+                const newPBoard = store.getState().game.eBoard
+                const newEBoard = store.getState().game.pBoard
+                const boardY = newPBoard.length - 1
+                const newEnemyTile = store.getState().game.selectedTile
+                const newSelectedTile = {
+                    ...store.getState().game.enemyTile,
+                    i: Math.abs(store.getState().game.enemyTile.i - boardY)
+                }
+                
+                // reveal the attacker
+                newPBoard[Math.abs(newEnemyTile.i - boardY)][newEnemyTile.j] = "x|" + newEnemyTile.tile.i_id
+
+                state = {
+                    pBoard: newPBoard,
+                    eBoard: newEBoard,
+                    selectedTile: newSelectedTile,
+                    enemyTile: newEnemyTile,
+                    fight: true,
+                    turn: false,
+                }
+            } else {
+                state = {
+                    pBoard: store.getState().game.eBoard,
+                    eBoard: store.getState().game.pBoard,
+                    playerList: store.getState().game.enemyList,
+                    enemyList: store.getState().game.playerList,
+                }
+                if(store.getState().game.gameState === IN_GAME) {
+                    store.getState().game.turn = false
+                }
             }
 
             socket.emit('sync-state', roomId, state, true, ack => {
