@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 const store = configureStore()
 
-//document.querySelector('body').addEventListener("contextmenu", e => e.preventDefault())
+document.querySelector('body').addEventListener("contextmenu", e => e.preventDefault())
 
 ReactDOM.render(
     <Provider store={store}>
