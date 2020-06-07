@@ -12,9 +12,11 @@ hogy mindaddig, amíg egy hallgató egy másik hallgató munkáját - vagy legal
 az fegyelmi vétségnek számít. A fegyelmi vétség legsúlyosabb következménye a hallgató elbocsátása az egyetemről.
 
 
-**~~Open sandbox: ´https://codesandbox.io/s/bajusz-stratego-cy35l´~~**
+**~~Open sandbox: https://codesandbox.io/s/bajusz-stratego-cy35l~~**
 
 A webprogramozás domain http protokollon keresztül fut, a böngésző letiltja ha https-en keresztül akarom elérni. Ezért a codesandboxon nem működik a websocket.
+
+**Működő program: http://bajusz.taboriposta.hu**
 
 
 
