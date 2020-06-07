@@ -74,7 +74,28 @@ export const gameReducer = (state = initialState, action) => {
 
     if(type === GAME_STATE_CHANGE) {
         if(payload === MAIN_PAGE) {
-            return initialState
+            return {
+                pBoard: initGameBoard,
+                eBoard: initEnemyBoard,
+                playerList: [],
+                enemyList: [],
+                selectedTile: '',
+                enemyTile: '',
+                fight: false,
+                defender: false,
+                player: 0,
+                turn: false,
+                gameState: MAIN_PAGE,
+                roomId: null,
+                ready: {
+                    count: 0,
+                    player: false,
+                },
+                gameOver: {
+                    on: false,
+                    message: '',
+                }
+            }
         } else {
             return {
                 pBoard: state.pBoard,
