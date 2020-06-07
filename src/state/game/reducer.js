@@ -4,8 +4,8 @@ import { SELECT_TILE, RESET_SELECTED_TILE, MOVE_TILE, REMOVE_TILE, ATTACK, PLAYE
 
 
 const initialState = {
-    pBoard: initGameBoard,
-    eBoard: initEnemyBoard,
+    pBoard: JSON.parse(JSON.stringify(initGameBoard)),  //deep copy
+    eBoard: JSON.parse(JSON.stringify(initEnemyBoard)), //deep copy
     playerList: [],
     enemyList: [],
     selectedTile: '',
@@ -74,28 +74,7 @@ export const gameReducer = (state = initialState, action) => {
 
     if(type === GAME_STATE_CHANGE) {
         if(payload === MAIN_PAGE) {
-            return {
-                pBoard: initGameBoard,
-                eBoard: initEnemyBoard,
-                playerList: [],
-                enemyList: [],
-                selectedTile: '',
-                enemyTile: '',
-                fight: false,
-                defender: false,
-                player: 0,
-                turn: false,
-                gameState: MAIN_PAGE,
-                roomId: null,
-                ready: {
-                    count: 0,
-                    player: false,
-                },
-                gameOver: {
-                    on: false,
-                    message: '',
-                }
-            }
+            return initialState
         } else {
             return {
                 pBoard: state.pBoard,

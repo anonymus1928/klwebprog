@@ -2,7 +2,7 @@ import { initTiles } from "../../domain/initTiles"
 import { TILES_REDUCE_PCS, TILES_INCREASE_PCS } from "./actions"
 
 
-export const tilesReducer = (state = initTiles, action) => {
+export const tilesReducer = (state = JSON.parse(JSON.stringify(initTiles)), action) => {
     const { type, payload } = action
 
     if(type === TILES_REDUCE_PCS) {
