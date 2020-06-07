@@ -7,6 +7,8 @@ A webprogramozás domain http protokollon keresztül fut, a böngésző letiltja
 
 _A fenti okból mindenképpen http protokoll szükséges!!!_
 
+**Github repo: https://github.com/anonymus1928/klwebprog**
+
 Az előkészítő szobánál a már felrakott bábukat jobb egérgombbal le lehet szedni. Ez a funkció már a második felvonásban is benne volt.
 
 ```javascript
