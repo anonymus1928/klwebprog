@@ -1,5 +1,5 @@
 
-**~~Open sandbox: https://codesandbox.io/s/bajusz-stratego-cy35l~~**
+**~~Open sandbox: https://codesandbox.io/s/bajusz-stratego-omqur~~**
 
 A webprogramozás domain http protokollon keresztül fut, a böngésző letiltja ha https-en keresztül akarom elérni. Ezért a codesandboxon nem működik a websocket.
 
