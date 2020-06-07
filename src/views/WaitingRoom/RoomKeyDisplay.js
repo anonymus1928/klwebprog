@@ -3,5 +3,5 @@ import { useSelector } from 'react-redux';
 
 export function RoomKeyDisplay() {
     const roomKey = useSelector(state => state.game.roomId)
-    return <p>{ roomKey }</p>
+    return <p id="roomKey">{ roomKey }</p>
 }
