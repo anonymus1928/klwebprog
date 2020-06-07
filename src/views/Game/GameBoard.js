@@ -107,6 +107,7 @@ export function GameBoard() {
             //IN_GAME
             if(selectedTile !== '' && turn) {
                 if(selectedTile.tile.i_id === 2) {
+                    
                     if(validTo2(i,j)) {
                         dispatch(moveTile(i,j))
                         dispatch(wsSyncState())
