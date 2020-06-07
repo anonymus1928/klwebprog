@@ -1,11 +1,32 @@
-import { initGameBoard, initEnemyBoard } from "../../domain/initBoards"
 import { MAIN_PAGE, JOIN_PLAYER, GAME_STATE_CHANGE, WAITING_FOR_SECOND_PLAYER, PREPARE_GAME, IN_GAME, GAME_OVER } from "./gameState_actions"
 import { SELECT_TILE, RESET_SELECTED_TILE, MOVE_TILE, REMOVE_TILE, ATTACK, PLAYER_DEFEAT, ENEMY_DEFEAT, DRAW } from "./board_actions"
 
 
 const initialState = {
-    pBoard: JSON.parse(JSON.stringify(initGameBoard)), //deep copy
-    eBoard: JSON.parse(JSON.stringify(initEnemyBoard)), //deep copy
+    pBoard: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,'w1','w2',0,0,'w1','w2',0,0],
+        [0,0,'w4','w3',0,0,'w4','w3',0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+    ],
+    eBoard: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,'w1','w2',0,0,'w1','w2',0,0],
+        [0,0,'w4','w3',0,0,'w4','w3',0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+    ],
     playerList: [],
     enemyList: [],
     selectedTile: '',

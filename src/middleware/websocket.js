@@ -84,8 +84,30 @@ export const socketMiddleware = store => next => action => {
 
         case GAME_STATE_CHANGE:
             if(action.payload === MAIN_PAGE) {
-                store.getState().game.pBoard = JSON.parse(JSON.stringify(initGameBoard)) //deep copy reset
-                store.getState().game.eBoard = JSON.parse(JSON.stringify(initEnemyBoard)) //deep copy reset
+                store.getState().game.pBoard = [
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,'w1','w2',0,0,'w1','w2',0,0],
+                    [0,0,'w4','w3',0,0,'w4','w3',0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                ]
+                store.getState().game.eBoard = [
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,'w1','w2',0,0,'w1','w2',0,0],
+                    [0,0,'w4','w3',0,0,'w4','w3',0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,0,0,0],
+                ]
                 store.getState().tiles = JSON.parse(JSON.stringify(initTiles)) //deep copy reset
                 socket.emit('leave-room', store.getState().game.roomId, ack => {
                     if(ack.status === 'error') {
