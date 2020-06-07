@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/klwebprog/static/css/main.fb887e7b.chunk.css",
-    "main.js": "/klwebprog/static/js/main.bd0549b7.chunk.js",
-    "main.js.map": "/klwebprog/static/js/main.bd0549b7.chunk.js.map",
-    "runtime-main.js": "/klwebprog/static/js/runtime-main.f37c9522.js",
-    "runtime-main.js.map": "/klwebprog/static/js/runtime-main.f37c9522.js.map",
-    "static/css/2.69121389.chunk.css": "/klwebprog/static/css/2.69121389.chunk.css",
-    "static/js/2.884c6561.chunk.js": "/klwebprog/static/js/2.884c6561.chunk.js",
-    "static/js/2.884c6561.chunk.js.map": "/klwebprog/static/js/2.884c6561.chunk.js.map",
-    "index.html": "/klwebprog/index.html",
-    "precache-manifest.078981119a30d969754995e7a0638039.js": "/klwebprog/precache-manifest.078981119a30d969754995e7a0638039.js",
-    "service-worker.js": "/klwebprog/service-worker.js",
-    "static/css/2.69121389.chunk.css.map": "/klwebprog/static/css/2.69121389.chunk.css.map",
-    "static/css/main.fb887e7b.chunk.css.map": "/klwebprog/static/css/main.fb887e7b.chunk.css.map",
-    "static/js/2.884c6561.chunk.js.LICENSE.txt": "/klwebprog/static/js/2.884c6561.chunk.js.LICENSE.txt",
-    "static/media/app.css": "/klwebprog/static/media/water4.4e06db7b.png"
+    "main.css": "/static/css/main.3bcf1610.chunk.css",
+    "main.js": "/static/js/main.bd0549b7.chunk.js",
+    "main.js.map": "/static/js/main.bd0549b7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d05cf984.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d05cf984.js.map",
+    "static/css/2.69121389.chunk.css": "/static/css/2.69121389.chunk.css",
+    "static/js/2.214e5291.chunk.js": "/static/js/2.214e5291.chunk.js",
+    "static/js/2.214e5291.chunk.js.map": "/static/js/2.214e5291.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c9a7268db81a485fdf92dff0cc0e2f5d.js": "/precache-manifest.c9a7268db81a485fdf92dff0cc0e2f5d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.69121389.chunk.css.map": "/static/css/2.69121389.chunk.css.map",
+    "static/css/main.3bcf1610.chunk.css.map": "/static/css/main.3bcf1610.chunk.css.map",
+    "static/js/2.214e5291.chunk.js.LICENSE.txt": "/static/js/2.214e5291.chunk.js.LICENSE.txt",
+    "static/media/app.css": "/static/media/water4.4e06db7b.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f37c9522.js",
+    "static/js/runtime-main.d05cf984.js",
     "static/css/2.69121389.chunk.css",
-    "static/js/2.884c6561.chunk.js",
-    "static/css/main.fb887e7b.chunk.css",
+    "static/js/2.214e5291.chunk.js",
+    "static/css/main.3bcf1610.chunk.css",
     "static/js/main.bd0549b7.chunk.js"
   ]
 }
