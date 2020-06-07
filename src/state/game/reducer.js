@@ -4,7 +4,7 @@ import { SELECT_TILE, RESET_SELECTED_TILE, MOVE_TILE, REMOVE_TILE, ATTACK, PLAYE
 
 
 const initialState = {
-    pBoard: JSON.parse(JSON.stringify(initGameBoard)),  //deep copy
+    pBoard: JSON.parse(JSON.stringify(initGameBoard)), //deep copy
     eBoard: JSON.parse(JSON.stringify(initEnemyBoard)), //deep copy
     playerList: [],
     enemyList: [],

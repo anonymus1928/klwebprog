@@ -1,6 +1,8 @@
 import * as actions from '../state/websocket/actions'
 import io from 'socket.io-client'
 import { JOIN_PLAYER, gameStateChange, PREPARE_GAME, GAME_STATE_CHANGE, MAIN_PAGE, IN_GAME, GAME_OVER, WAITING_FOR_SECOND_PLAYER } from '../state/game/gameState_actions'
+import { initGameBoard, initEnemyBoard } from '../domain/initBoards'
+import { initTiles } from '../domain/initTiles'
 
 let socket = null
 
@@ -82,6 +84,9 @@ export const socketMiddleware = store => next => action => {
 
         case GAME_STATE_CHANGE:
             if(action.payload === MAIN_PAGE) {
+                store.getState().game.pBoard = JSON.parse(JSON.stringify(initGameBoard)) //deep copy reset
+                store.getState().game.eBoard = JSON.parse(JSON.stringify(initEnemyBoard)) //deep copy reset
+                store.getState().tiles = JSON.parse(JSON.stringify(initTiles)) //deep copy reset
                 socket.emit('leave-room', store.getState().game.roomId, ack => {
                     if(ack.status === 'error') {
                         console.error('[LEAVE-ROOM] - ', ack)
