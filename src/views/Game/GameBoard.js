@@ -109,13 +109,14 @@ export function GameBoard() {
                 if(selectedTile.tile.i_id === 2) {
                     if(validTo2(i,j)) {
                         dispatch(moveTile(i,j))
+                        dispatch(wsSyncState())
                     }
                 } else {
                     if(validStep(i,j)) {
                         dispatch(moveTile(i,j))
+                        dispatch(wsSyncState())
                     }
                 }
-                dispatch(wsSyncState())
             }
         } else {
             return <div class="alert alert-danger" role="alert">WRONG GAMESTATE => '{gameState}'</div>
